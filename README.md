@@ -60,6 +60,10 @@ Checkout the following package in your tracking workspace and compile again.
 This package contains a bag file including record depth images and an object 
 model. To launch the example, do the following:
 
+```bash
+git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
+```
+
 ### Addition documentation
 
 For additionl details about the object tracking, please checkout the [dbot_ros](https://github.com/bayesian-object-tracking/dbot_ros/blob/master/README.md) package.
@@ -87,7 +91,7 @@ $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 Add the following example project to the workspace
 
 ```bash
-https://cassinaj@git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
+git clone https://git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
 ```
 and re-compile. Once compile you can run the robot tracker along with the 
 recorded sensory data:
