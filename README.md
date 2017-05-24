@@ -96,7 +96,11 @@ $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 Add the following example project to the workspace
 
 ```bash
+cd src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
+cd ..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+source devel/setup.bash
 ```
 and re-compile. Once compile you can run the robot tracker along with the 
 recorded sensory data:
