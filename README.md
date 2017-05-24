@@ -54,7 +54,7 @@ If no CUDA enabled device is available, you can deactivate the GPU implementatio
 $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
-### Examaple Object Tracking Project 
+### Example Object Tracking Project 
 
 Checkout the following package in your tracking workspace and compile again. 
 This package contains a bag file including record depth images and an object 
