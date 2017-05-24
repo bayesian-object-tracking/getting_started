@@ -1,12 +1,15 @@
 
 
-[Depth Based Object and Robot Tracking](#depth-based-object-and-robot-tracking)
-* [Requirements](#requirements)
-* [Dependencies](#dependencies)
-* [Object Tracking](#object-tracking)
-  * [Workspace setup and compilation](#workspace-setup-and-compilation)
-  * [Getting Started Example Project](#example-project)
-  * [Addition documentation](#additional-documentation)
+* [Depth Based Object and Robot Tracking](#depth-based-object-and-robot-tracking)
+  * [Requirements](#requirements)
+  * [Dependencies](#dependencies)
+  * [Object Tracking](#object-tracking)
+    * [Workspace setup and compilation](#workspace-setup-and-compilation)
+    * [Getting Started Example Object Tracking Project](#example-object-tracking-project)
+    * [Addition documentation](#additional-documentation)
+  * [Robot Tracking](#robot-tracking)
+    
+
 
 
 # Depth Based Object and Robot Tracking 
@@ -25,7 +28,7 @@ additional information on customizing the setup for different robots.
  * (optional) [CUDA](https://developer.nvidia.com/cuda-downloads) 6.5 or later with CUDA enabled
    graphic card 
 
-## Dependecies
+## Dependencies
  * [ROS Indigo](http://wiki.ros.org/indigo)
  * [Filtering library](https://github.com/filtering-library/fl) (fl)
  * [Eigen](http://eigen.tuxfamily.org/) 3.2.1 or later
@@ -50,11 +53,11 @@ If no CUDA enabled device is available, you can deactivate the GPU implementatio
 $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
-### Examaple project 
+### Examaple Object Tracking Project 
 
-Checkout the following package in your tracking workspace and compile again. This package 
-contains a bag file including record depth images and an object model. To launch the example, 
-do the following:
+Checkout the following package in your tracking workspace and compile again. 
+This package contains a bag file including record depth images and an object 
+model. To launch the example, do the following:
 
 ### Addition documentation
 
@@ -62,13 +65,38 @@ For additionl details about the object tracking, please checkout the [dbot_ros](
 
 ## Robot Tracking
 
-The robot tracking setup builds on top of the object tracking, i.e. follow first the workspace setup and of the object tracking above. Then checkout the following package to the workspace
+The robot tracking setup builds on top of the object tracking, i.e. follow 
+first the workspace setup and of the object tracking above. Then checkout 
+the following package to the workspace
 
+```bash
+$ cd $HOME
+$ cd projects/tracking/src
+$ git clone git@github.com:bayesian-object-tracking/dbrt.git
+$ cd ..
+$ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+```
+Again, if no CUDA enabled device is available, you can deactivate the GPU implementation via 
+```bash
+$ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
+```
 
+### Example Robot Tracking Project using MPI Apollo Robot
 
+Add the following example project to the workspace
 
+```bash
+https://cassinaj@git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
+```
+and re-compile. Once compile you can run the robot tracker along with the 
+recorded sensory data:
 
+```bash
+roslaunch dbrt_example launch_example_gpu.launch
+```
 
+If CUDA is not being used, you can start the CPU based setup by launching 
+`lula_example_cpu.launch` instead. Note that the CPU version will run slower.
 
 
 # Depth Based Object and Robot Tracking 
