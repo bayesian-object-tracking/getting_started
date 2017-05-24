@@ -64,6 +64,9 @@ model. To launch the example, do the following:
 ```bash
 cd src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
+cd ..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+source devel/setup.bash
 ```
 
 ### Addition documentation
