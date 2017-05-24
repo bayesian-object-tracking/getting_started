@@ -48,6 +48,7 @@ $ git clone git@github.com:bayesian-object-tracking/dbot_ros_msgs.git
 $ git clone git@github.com:bayesian-object-tracking/dbot_ros.git
 $ cd ..
 $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+$ source devel/setup.sh
 ```
 If no CUDA enabled device is available, you can deactivate the GPU implementation via 
 ```bash
