@@ -62,6 +62,7 @@ This package contains a bag file including record depth images and an object
 model. To launch the example, do the following:
 
 ```bash
+cd src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
 ```
 
