@@ -8,6 +8,7 @@
     * [Getting Started Example Object Tracking Project](#example-object-tracking-project)
     * [Addition documentation](#additional-documentation)
   * [Robot Tracking](#robot-tracking)
+    * [Getting Started Example Robot Tracking Project](#example-robot-tracking-project-using-mpi-apollo-robot)
     
 
 
@@ -98,17 +99,4 @@ roslaunch dbrt_example launch_example_gpu.launch
 If CUDA is not being used, you can start the CPU based setup by launching 
 `lula_example_cpu.launch` instead. Note that the CPU version will run slower.
 
-
-# Depth Based Object and Robot Tracking 
-
-This is a collection of packages for tracking known objects and articulated 
-robots based on depth images and additionally joint angle sensor for the robot 
-tracking.
-
-## Requirements
- * MS Kinect or Asus XTION depth sensor
- * Ubuntu 14.04
- * Tested with [ROS Indigo](http://wiki.ros.org/indigo)
- * c++11 Compiler (gcc-4.7 or later)
- * [CUDA](https://developer.nvidia.com/cuda-downloads) 6.5 or later (optional)
 
