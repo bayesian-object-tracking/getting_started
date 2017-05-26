@@ -132,5 +132,5 @@ If CUDA is not being used, you can start the CPU based setup by launching
 ### Addition documentation
 
 For additionl details about the object tracking, please checkout the 
-[dbrt_ros](https://github.com/bayesian-object-tracking/dbrt_ros/blob/master/README.md) package.
+[dbrt](https://github.com/bayesian-object-tracking/dbrt/blob/master/README.md) package.
 
