@@ -70,25 +70,17 @@ source devel/setup.bash
 ```
 Now you can run the example. 
 ```bash
-roscd dbot_example/launch
-bash move_pose_cache.sh 
-roslaunch dbot_example start_rviz.launch 
-roslaunch dbot_example particle_tracker_gpu.launch
+roslaunch dbot_example launch_example_gpu.launch
 ```
 or if you did not install cude you launch instead
 ```bash
-roscd dbot_example/launch
-bash move_pose_cache.sh 
-roslaunch dbot_example start_rviz.launch 
-roslaunch dbot_example particle_tracker_cpu.launch
+roslaunch dbot_example launch_example_cpu.launch
 ```
-now, as soon as you launch the bagfile with the next command, an interactive marker should show up in rviz. this is for initialization of the tracker, you can move it to align it with the point cloud, but it should already be approximately aligned. once you are done, you can click on the object and the tracker should start. you should do so before the object is being moved in the bagfile.
-```bash
-roslaunch dbot_example play_bagfile.launch
-```
-
-
-
+now, as soon as you launch the example an interactive marker should show up in 
+rviz. this is for initialization of the tracker, you can move it to align it 
+with the point cloud, but it should already be approximately aligned. once you 
+are done, you can click on the object and the tracker should start. You should 
+do so before the object is being moved in the playback of the bagfile.
 
 
 ### Addition documentation
@@ -140,5 +132,5 @@ If CUDA is not being used, you can start the CPU based setup by launching
 ### Addition documentation
 
 For additionl details about the object tracking, please checkout the 
-[dbot_ros](https://github.com/bayesian-object-tracking/dbrt_ros/blob/master/README.md) package.
+[dbrt_ros](https://github.com/bayesian-object-tracking/dbrt_ros/blob/master/README.md) package.
 
