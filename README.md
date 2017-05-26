@@ -66,7 +66,8 @@ git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
 
 ### Addition documentation
 
-For additionl details about the object tracking, please checkout the [dbot_ros](https://github.com/bayesian-object-tracking/dbot_ros/blob/master/README.md) package.
+For additionl details about the object tracking, please checkout the 
+[dbot_ros](https://github.com/bayesian-object-tracking/dbot_ros/blob/master/README.md) package.
 
 ## Robot Tracking
 
@@ -100,7 +101,13 @@ recorded sensory data:
 roslaunch dbrt_example launch_example_gpu.launch
 ```
 
+This will start the data playback, the visualization and the robot tracker.
+
 If CUDA is not being used, you can start the CPU based setup by launching 
 `lula_example_cpu.launch` instead. Note that the CPU version will run slower.
 
+### Addition documentation
+
+For additionl details about the object tracking, please checkout the 
+[dbot_ros](https://github.com/bayesian-object-tracking/dbrt_ros/blob/master/README.md) package.
 
