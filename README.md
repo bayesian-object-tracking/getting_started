@@ -48,21 +48,48 @@ $ git clone git@github.com:bayesian-object-tracking/dbot_ros_msgs.git
 $ git clone git@github.com:bayesian-object-tracking/dbot_ros.git
 $ cd ..
 $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+$ source devel/setup.bash
 ```
 If no CUDA enabled device is available, you can deactivate the GPU implementation via 
 ```bash
 $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
-### Examaple Object Tracking Project 
+### Example Object Tracking Project 
 
 Checkout the following package in your tracking workspace and compile again. 
 This package contains a bag file including record depth images and an object 
 model. To launch the example, do the following:
 
 ```bash
+cd src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
+cd ..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+source devel/setup.bash
 ```
+Now you can run the example. 
+```bash
+roscd dbot_example/launch
+bash move_pose_cache.sh 
+roslaunch dbot_example start_rviz.launch 
+roslaunch dbot_example particle_tracker_gpu.launch
+```
+or if you did not install cude you launch instead
+```bash
+roscd dbot_example/launch
+bash move_pose_cache.sh 
+roslaunch dbot_example start_rviz.launch 
+roslaunch dbot_example particle_tracker_cpu.launch
+```
+now, as soon as you launch the bagfile with the next command, an interactive marker should show up in rviz. this is for initialization of the tracker, you can move it to align it with the point cloud, but it should already be approximately aligned. once you are done, you can click on the object and the tracker should start. you should do so before the object is being moved in the bagfile.
+```bash
+roslaunch dbot_example play_bagfile.launch
+```
+
+
+
+
 
 ### Addition documentation
 
@@ -92,9 +119,13 @@ $ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 Add the following example project to the workspace
 
 ```bash
+cd src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
+cd ..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+source devel/setup.bash
 ```
-and re-compile. Once compile you can run the robot tracker along with the 
+Once compile you can run the robot tracker along with the 
 recorded sensory data:
 
 ```bash
