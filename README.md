@@ -142,7 +142,7 @@ roslaunch dbrt_example launch_example_gpu.launch
 This will start the data playback, the visualization and the robot tracker.
 
 If CUDA is not being used, you can start the CPU based setup by launching 
-`lula_example_cpu.launch` instead. Note that the CPU version will run slower.
+`launch_example_cpu.launch` instead. Note that the CPU version will run slower.
 
 ### Addition documentation
 
