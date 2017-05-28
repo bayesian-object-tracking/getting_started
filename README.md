@@ -82,6 +82,19 @@ with the point cloud, but it should already be approximately aligned. once you
 are done, you can click on the object and the tracker should start. You should 
 do so before the object is being moved in the playback of the bagfile.
 
+### How to cite?
+```
+inproceedings{wuthrich-iros-2013,
+ title = {Probabilistic Object Tracking Using a Range Camera},
+ author = {W{\"u}thrich, M. and Pastor, P. and Kalakrishnan, M. and Bohg, J. and Schaal, S.},
+ booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems},
+ pages = {3195-3202},
+ publisher = {IEEE},
+ month = nov,
+ year = {2013},
+ month_numeric = {11}
+}
+```
 
 ### Addition documentation
 
@@ -134,3 +147,17 @@ If CUDA is not being used, you can start the CPU based setup by launching
 For additionl details about the object tracking, please checkout the 
 [dbrt](https://github.com/bayesian-object-tracking/dbrt/blob/master/README.md) package.
 
+### How to cite?
+```
+@article{GarciaCifuentes.RAL,
+ title = {Probabilistic Articulated Real-Time Tracking for Robot Manipulation},
+ author = {Garcia Cifuentes, Cristina and Issac, Jan and W{\"u}thrich, Manuel and Schaal, Stefan and Bohg, Jeannette},
+ journal = {IEEE Robotics and Automation Letters (RA-L)},
+ volume = {2},
+ number = {2},
+ pages = {577-584},
+ month = apr,
+ year = {2017},
+ month_numeric = {4}
+}
+```
