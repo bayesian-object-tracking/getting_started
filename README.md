@@ -7,8 +7,10 @@
     * [Workspace setup and compilation](#workspace-setup-and-compilation)
     * [Getting Started Example Object Tracking Project](#example-object-tracking-project)
     * [Addition documentation](#additional-documentation)
+    * [How to cite](#how-to-cite)
   * [Robot Tracking](#robot-tracking)
     * [Getting Started Example Robot Tracking Project](#example-robot-tracking-project-using-mpi-apollo-robot)
+    * [How to cite](#how-to-cite)
     
 
 
@@ -82,7 +84,12 @@ with the point cloud, but it should already be approximately aligned. once you
 are done, you can click on the object and the tracker should start. You should 
 do so before the object is being moved in the playback of the bagfile.
 
-### How to cite?
+### Addition documentation
+
+For additional details about the object tracking, please checkout the 
+[dbot_ros](https://github.com/bayesian-object-tracking/dbot_ros/blob/master/README.md) package.
+
+### How to cite
 ```
 inproceedings{wuthrich-iros-2013,
  title = {Probabilistic Object Tracking Using a Range Camera},
@@ -95,11 +102,6 @@ inproceedings{wuthrich-iros-2013,
  month_numeric = {11}
 }
 ```
-
-### Addition documentation
-
-For additionl details about the object tracking, please checkout the 
-[dbot_ros](https://github.com/bayesian-object-tracking/dbot_ros/blob/master/README.md) package.
 
 ## Robot Tracking
 
@@ -147,7 +149,7 @@ If CUDA is not being used, you can start the CPU based setup by launching
 For additionl details about the object tracking, please checkout the 
 [dbrt](https://github.com/bayesian-object-tracking/dbrt/blob/master/README.md) package.
 
-### How to cite?
+### How to cite
 ```
 @article{GarciaCifuentes.RAL,
  title = {Probabilistic Articulated Real-Time Tracking for Robot Manipulation},
