@@ -15,10 +15,13 @@
 
 
 
-# Depth Based Object and Robot Tracking 
+# Bayesian Object Tracking
 
 The Bayesian Object Tracking organization on github is a collection of packages for
-3D tracking of rigid objects (using depth images), as well as full robot arm pose estimation (using depth images and joint encoders). The core libraries for object tracking are ROS independent. However, 
+3D tracking of rigid objects (using depth images), as well as robot arm tracking (using depth images and joint encoders).
+For more details about the research which underlies these packages, please have a look at https://am.is.tuebingen.mpg.de/research_projects/probabilistic-object-tracking-using-a-depth-camera.
+
+The core libraries for object tracking are ROS independent. However, 
 the tracker integration with sensors is based on the ROS eco-system.
 
 Here, we give instructions on how to install the code and a getting started 
@@ -29,15 +32,14 @@ to your needs.
 
 
 ## Requirements
- * MS Kinect or Asus XTION depth sensor
- * Ubuntu 14.04
+ * MS Kinect or Asus XTION depth sensor (unless you work with recorded data)
+ * Ubuntu 14.04 (might work on other versions, but has not been tested)
  * c++11 Compiler (gcc-4.7 or later)
  * (optional) [CUDA](https://developer.nvidia.com/cuda-downloads) 6.5 or later with CUDA enabled
    graphic card 
 
 ## Dependencies
  * [ROS Indigo](http://wiki.ros.org/indigo)
- * [Filtering library](https://github.com/filtering-library/fl) (fl)
  * [Eigen](http://eigen.tuxfamily.org/) 3.2.1 or later
  
 ## Object Tracking
@@ -45,47 +47,53 @@ The object tracking can be used without the robot tracking package (dbrt).
 
 ### Workspace setup and compilation
 ```bash
-$ cd $HOME
-$ mkdir -p projects/tracking/src  
-$ cd projects/tracking/src
-$ git clone git@github.com:filtering-library/fl.git
-$ git clone git@github.com:bayesian-object-tracking/dbot.git
-$ git clone git@github.com:bayesian-object-tracking/dbot_ros_msgs.git
-$ git clone git@github.com:bayesian-object-tracking/dbot_ros.git
-$ cd ..
-$ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
-$ source devel/setup.bash
+cd $HOME
+mkdir -p projects/tracking/src  
+cd projects/tracking/src
+git clone git@github.com:filtering-library/fl.git
+git clone git@github.com:bayesian-object-tracking/dbot.git
+git clone git@github.com:bayesian-object-tracking/dbot_ros_msgs.git
+git clone git@github.com:bayesian-object-tracking/dbot_ros.git
+cd ..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+source devel/setup.bash
 ```
-If no CUDA enabled device is available, you can deactivate the GPU implementation via 
+If no CUDA enabled device is available, you can build without the GPU implementation via 
 ```bash
-$ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
-### Example Object Tracking Project 
+### Install and run example
 
-Checkout the following package in your tracking workspace and compile again. 
-This package contains a bag file including record depth images and an object 
-model. To launch the example, do the following:
+The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved),
+and mesh models of some objects. Additionally it contains launch files, which allow
+to run the code easily.
 
+To install, follow these steps:
 ```bash
-cd src
+cd projects/tracking/src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
 cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 source devel/setup.bash
 ```
-Now you can run the example. 
+Again, if no CUDA enabled device is available, you can build without the GPU implementation via 
+```bash
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
+```
+
+Now you can run the example:
 ```bash
 roslaunch dbot_example launch_example_gpu.launch
 ```
-or if you did not install cude you launch instead
+If you did not install CUDA, you can run instead:
 ```bash
 roslaunch dbot_example launch_example_cpu.launch
 ```
-now, as soon as you launch the example an interactive marker should show up in 
-rviz. this is for initialization of the tracker, you can move it to align it 
-with the point cloud, but it should already be approximately aligned. once you 
-are done, you can click on the object and the tracker should start. You should 
+As soon as you launch the example, an interactive marker should show up in 
+rviz. This is for initialization of the tracker, you can move it to align it 
+with the point cloud, but it should already be approximately aligned. Once you 
+are done, you can click on the object marker and the tracker should start. You should 
 do so before the object is being moved in the playback of the bagfile.
 
 ### Addition documentation
@@ -114,15 +122,15 @@ first the workspace setup and of the object tracking above. Then checkout
 the following package to the workspace
 
 ```bash
-$ cd $HOME
-$ cd projects/tracking/src
-$ git clone git@github.com:bayesian-object-tracking/dbrt.git
-$ cd ..
-$ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+cd $HOME
+cd projects/tracking/src
+git clone git@github.com:bayesian-object-tracking/dbrt.git
+cd ..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 ```
 Again, if no CUDA enabled device is available, you can deactivate the GPU implementation via 
 ```bash
-$ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
 ### Example Robot Tracking Project using MPI Apollo Robot
