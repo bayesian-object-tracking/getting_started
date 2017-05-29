@@ -64,13 +64,13 @@ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
 ### Install and run the example
-The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved),
+The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved)
 and mesh models of some objects. Additionally it contains launch files, which allow you
 to run the code easily.
 
-To install, follow these steps:
+To install, follow these steps (note that cloning may take a while because the bagfile is large):
 ```bash
-cd projects/tracking/src
+cd $HOME/projects/tracking/src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
 cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
@@ -86,11 +86,11 @@ Now you can run the example:
 roslaunch dbot_example launch_example_gpu.launch
 ```
 
-If you did not install CUDA, you can run instead:
+If you did not install CUDA, you can run instead (note that the tracking performance is significantly better with the GPU version):
 ```bash
 roslaunch dbot_example launch_example_cpu.launch
 ```
-Note that the tracking performance is significantly better with the GPU version.
+
 
 
 As soon as you launch the example, rviz should start, and an interactive marker should show up (in the form of an impact wrench). This marker is for initialization of the tracker, you can move it to align it 
@@ -125,8 +125,7 @@ first the workspace setup of the object tracking above. Then continue
 with the instructions below:
 
 ```bash
-cd $HOME
-cd projects/tracking/src
+cd $HOME/projects/tracking/src
 git clone git@github.com:bayesian-object-tracking/dbrt.git
 cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
@@ -138,10 +137,10 @@ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 
 ### Install and run the example
 
-Add the following example project to the workspace
+Add the following example project to the workspace (note that cloning may take a while due to the size of the data)
 
 ```bash
-cd src
+cd $HOME/projects/tracking/src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
 cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
@@ -154,15 +153,14 @@ recorded sensory data:
 roslaunch dbrt_example launch_example_gpu.launch
 ```
 
-If CUDA is not being used, you can start the CPU based setup instead: 
+If CUDA is not being used, you can start the CPU based setup instead (note that the tracking performance is significantly better with the GPU version):
 ```bash
 roslaunch dbrt_example launch_example_cpu.launch
 ```
-Note that the tracking performance is significantly better with the GPU version.
 
 This will start the data playback, the visualization and the robot tracker.
 You should see a point cloud in white, the robot model using only joint
-encoders in red, and the corrected robot model in blue. It should be visible
+encoders in red, and the corrected robot model (fusing joint encoders and depth images) in blue. It should be visible
 that the blue robot model is significantly better aligned with the point cloud than 
 the red one.
 
