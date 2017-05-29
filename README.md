@@ -63,7 +63,7 @@ If no CUDA enabled device is available, you can build without the GPU implementa
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
-### Install and run example
+### Install and run the example
 
 The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved),
 and mesh models of some objects. Additionally it contains launch files, which allow
@@ -90,6 +90,9 @@ If you did not install CUDA, you can run instead:
 ```bash
 roslaunch dbot_example launch_example_cpu.launch
 ```
+Note that the tracking performance is significantly better with the GPU version.
+
+
 As soon as you launch the example, an interactive marker should show up in 
 rviz. This is for initialization of the tracker, you can move it to align it 
 with the point cloud, but it should already be approximately aligned. Once you 
@@ -117,9 +120,10 @@ inproceedings{wuthrich-iros-2013,
 
 ## Robot Tracking
 
+### Workspace setup and compilation
 The robot tracking setup builds on top of the object tracking, i.e. follow 
-first the workspace setup and of the object tracking above. Then checkout 
-the following package to the workspace
+first the workspace setup of the object tracking above. Then continue
+with the instructions below:
 
 ```bash
 cd $HOME
@@ -133,7 +137,7 @@ Again, if no CUDA enabled device is available, you can deactivate the GPU implem
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
-### Example Robot Tracking Project using MPI Apollo Robot
+### Install and run the example
 
 Add the following example project to the workspace
 
@@ -144,17 +148,26 @@ cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 source devel/setup.bash
 ```
-Once compile you can run the robot tracker along with the 
+Now you can run the robot tracker along with the 
 recorded sensory data:
 
 ```bash
 roslaunch dbrt_example launch_example_gpu.launch
 ```
 
-This will start the data playback, the visualization and the robot tracker.
+If CUDA is not being used, you can start the CPU based setup instead: 
+```bash
+roslaunch dbrt_example launch_example_cpu.launch
+```
+Note that the tracking performance is significantly better with the GPU version.
 
-If CUDA is not being used, you can start the CPU based setup by launching 
-`launch_example_cpu.launch` instead. Note that the CPU version will run slower.
+This will start the data playback, the visualization and the robot tracker.
+You should see a point cloud in white, the robot model using only joint
+encoders in red, and the corrected robot model in blue. It should be visible
+that the blue robot model is significantly better aligned with the point cloud than 
+the red one.
+
+
 
 ### Addition documentation
 
