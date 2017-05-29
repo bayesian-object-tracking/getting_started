@@ -21,8 +21,8 @@ The Bayesian Object Tracking organization on github is a collection of packages 
 3D tracking of rigid objects (using depth images), as well as robot arm tracking (using depth images and joint encoders).
 For more details about the research which underlies these packages, please have a look at https://am.is.tuebingen.mpg.de/research_projects/probabilistic-object-tracking-using-a-depth-camera.
 
-The core libraries for object tracking are ROS independent. However, 
-the tracker integration with sensors is based on the ROS eco-system.
+The core library for object tracking (dbot) is ROS independent. However, 
+the integration with sensors (dbot_ros, dbrt) is based on the ROS eco-system.
 
 Here, we give instructions on how to install the code and a getting started 
 repository. This repository contains a complete example, including the 
@@ -43,7 +43,7 @@ to your needs.
  * [Eigen](http://eigen.tuxfamily.org/) 3.2.1 or later
  
 ## Object Tracking
-The object tracking can be used without the robot tracking package (dbrt). 
+The object tracking (dbot, dbot_ros) can be used without the robot tracking package (dbrt). 
 
 ### Workspace setup and compilation
 ```bash
@@ -64,9 +64,8 @@ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
 ### Install and run the example
-
 The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved),
-and mesh models of some objects. Additionally it contains launch files, which allow
+and mesh models of some objects. Additionally it contains launch files, which allow you
 to run the code easily.
 
 To install, follow these steps:
@@ -86,6 +85,7 @@ Now you can run the example:
 ```bash
 roslaunch dbot_example launch_example_gpu.launch
 ```
+
 If you did not install CUDA, you can run instead:
 ```bash
 roslaunch dbot_example launch_example_cpu.launch
@@ -93,13 +93,12 @@ roslaunch dbot_example launch_example_cpu.launch
 Note that the tracking performance is significantly better with the GPU version.
 
 
-As soon as you launch the example, an interactive marker should show up in 
-rviz. This is for initialization of the tracker, you can move it to align it 
-with the point cloud, but it should already be approximately aligned. Once you 
-are done, you can click on the object marker and the tracker should start. You should 
-do so before the object is being moved in the playback of the bagfile.
+As soon as you launch the example, rviz should start, and an interactive marker should show up (in the form of an impact wrench). This marker is for initialization of the tracker, you can move it to align it 
+with the point cloud. In this example, it should already be approximately aligned. Once you 
+are done moving the marker, you can click on it and the tracker should start (note that in the recorded sequence the object starts moving at some point, make sure you initialize before that). You should see a green object 
+model following the actual object visible in the white point cloud.
 
-### Addition documentation
+### Additional documentation
 
 For additional details about the object tracking, please checkout the 
 [dbot_ros](https://github.com/bayesian-object-tracking/dbot_ros/blob/master/README.md) package.
