@@ -17,12 +17,16 @@
 
 # Depth Based Object and Robot Tracking 
 
-This is a collection of packages for tracking known objects and articulated
-robots based on depth images and additionally joint angle sensors for the robot 
-tracking. The core libraries for object tracking are ROS independent. However, 
-the tracker integration with sensors is based on the ROS eco-system. In this 
-document we will show an example on how to use the trackers and provided 
-additional information on customizing the setup for different robots.
+The Bayesian Object Tracking organization on github is a collection of packages for
+3D tracking of rigid objects (using depth images), as well as full robot arm pose estimation (using depth images and joint encoders). The core libraries for object tracking are ROS independent. However, 
+the tracker integration with sensors is based on the ROS eco-system.
+
+Here, we give instructions on how to install the code and a getting started 
+repository. This repository contains a complete example, including the 
+necessary models and data. We recommend that you follow the instructions below
+to install and run the example. Once the example is working, you can adapt it 
+to your needs.
+
 
 ## Requirements
  * MS Kinect or Asus XTION depth sensor
