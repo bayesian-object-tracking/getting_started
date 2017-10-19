@@ -166,7 +166,7 @@ the red one.
 
 
 
-### Addition documentation
+### Additional documentation
 
 For additional details about the robot tracking, please checkout the 
 [dbrt](https://github.com/bayesian-object-tracking/dbrt/blob/master/README.md) package.
