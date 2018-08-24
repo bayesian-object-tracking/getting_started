@@ -33,19 +33,22 @@ to your needs.
 
 ## Requirements
  * MS Kinect or Asus XTION depth sensor (unless you work with recorded data)
- * Ubuntu 14.04 (might work on other versions, but has not been tested)
+ * Ubuntu 14.04 / 16.04 (might work on other versions, but has not been tested)
  * c++11 Compiler (gcc-4.7 or later)
  * (optional) [CUDA](https://developer.nvidia.com/cuda-downloads) 6.5 or later with CUDA enabled
    graphic card 
 
 ## Dependencies
- * [ROS Indigo](http://wiki.ros.org/indigo)
+ * [ROS Indigo](http://wiki.ros.org/indigo) with 14.04
+ * [ROS Kinetic](http://wiki.ros.org/kinetic) with 16.04
  * [Eigen](http://eigen.tuxfamily.org/) 3.2.1 or later
  
 ## Object Tracking
 The object tracking (dbot, dbot_ros) can be used without the robot tracking package (dbrt). 
 
 ### Workspace setup and compilation
+
+#### With ROS indigo and Ubuntu 14.04
 ```bash
 cd $HOME
 mkdir -p projects/tracking/src  
@@ -62,6 +65,50 @@ If no CUDA enabled device is available, you can build without the GPU implementa
 ```bash
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
+
+#### With ROS kinetic and Ubuntu 16.04
+
+Different from 14.04, you first have to install a specific Eigen Version.
+(Thanks Prasanna pkr97 for the [fix](https://github.com/bayesian-object-tracking/dbot/issues/5)!) 
+
+```bash
+cd $HOME
+mkdir -p projects/tracking/src  
+cd projects/tracking/src
+wget http://bitbucket.org/eigen/eigen/get/3.2.10.tar.bz2
+ tar -xf 3.2.10.tar.bz2
+ cd eigen-eigen-b9cd8366d4e8
+ mkdir build
+ cd build
+ cmake ..
+ sudo make install
+```
+
+Now you can clone the necessary repos and checkout the branches specific to 16.04 and kinetic.
+
+```bash
+cd $HOME/projects/tracking/src
+git clone git@github.com:filtering-library/fl.git
+git clone git@github.com:bayesian-object-tracking/dbot.git
+cd dbot
+git checkout xenial-xerus-dev
+cd ..
+git clone git@github.com:bayesian-object-tracking/dbot_ros_msgs.git
+cd dbot_ros_msgs
+git checkout xenial-xerus-kinetic-dev
+cd ..
+git clone git@github.com:bayesian-object-tracking/dbot_ros.git
+cd dbot_ros
+git checkout xenial-xerus-kinetic-dev
+cd ../../
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+source devel/setup.bash
+```
+
+If no CUDA enabled device is available, you can build without the GPU implementation via 
+```bash
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
+
 
 ### Install and run the example
 The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved)
