@@ -108,7 +108,7 @@ source devel/setup.bash
 If no CUDA enabled device is available, you can build without the GPU implementation via 
 ```bash
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
-
+```
 
 ### Install and run the example
 The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved)
