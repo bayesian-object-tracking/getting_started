@@ -169,7 +169,9 @@ inproceedings{wuthrich-iros-2013,
 ### Workspace setup and compilation
 The robot tracking setup builds on top of the object tracking, i.e. follow 
 first the workspace setup of the object tracking above. Then continue
-with the instructions below:
+with the instructions below according to your ROS and Ubuntu version:
+
+#### With ROS indigo and Ubuntu 14.04
 
 ```bash
 cd $HOME/projects/tracking/src
@@ -182,9 +184,26 @@ Again, if no CUDA enabled device is available, you can deactivate the GPU implem
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
+#### With ROS kinetic and Ubuntu 16.04
+
+```bash
+cd $HOME/projects/tracking/src
+git clone git@github.com:bayesian-object-tracking/dbrt.git
+cd dbrt
+git checkout xenial-xerus-kinetic-dev
+cd ../../
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+```
+Again, if no CUDA enabled device is available, you can deactivate the GPU implementation via 
+```bash
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
+```
+
 ### Install and run the example
 
 Add the following example project to the workspace (note that cloning may take a while due to the size of the data)
+
+#### With ROS indigo and Ubuntu 14.04
 
 ```bash
 cd $HOME/projects/tracking/src
@@ -193,6 +212,19 @@ cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 source devel/setup.bash
 ```
+
+#### With ROS kinetic and Ubuntu 16.04
+```bash
+cd $HOME/projects/tracking/src
+git clone https://git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
+cd dbrt_getting_started
+git checkout xenial-xerus-kinetic-dev
+cd ../../
+cd ..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+source devel/setup.bash
+```
+
 Now you can run the robot tracker along with the 
 recorded sensory data:
 
