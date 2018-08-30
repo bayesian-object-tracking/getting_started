@@ -220,7 +220,6 @@ git clone https://git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
 cd dbrt_getting_started
 git checkout xenial-xerus-kinetic-dev
 cd ../../
-cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 source devel/setup.bash
 ```
