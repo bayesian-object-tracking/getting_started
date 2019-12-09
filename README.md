@@ -61,54 +61,6 @@ cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 source devel/setup.bash
 ```
-If no CUDA enabled device is available, you can build without the GPU implementation via 
-```bash
-catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
-```
-
-#### With ROS kinetic and Ubuntu 16.04
-
-Different from 14.04, you first have to install a specific Eigen Version.
-(Thanks Prasanna pkr97 for the [fix](https://github.com/bayesian-object-tracking/dbot/issues/5)!) 
-
-```bash
-cd $HOME
-mkdir -p projects/tracking/src  
-cd projects/tracking/src
-wget http://bitbucket.org/eigen/eigen/get/3.2.10.tar.bz2
- tar -xf 3.2.10.tar.bz2
- cd eigen-eigen-b9cd8366d4e8
- mkdir build
- cd build
- cmake ..
- sudo make install
-```
-
-Now you can clone the necessary repos and checkout the branches specific to 16.04 and kinetic.
-
-```bash
-cd $HOME/projects/tracking/src
-git clone git@github.com:filtering-library/fl.git
-git clone git@github.com:bayesian-object-tracking/dbot.git
-cd dbot
-git checkout xenial-xerus-dev
-cd ..
-git clone git@github.com:bayesian-object-tracking/dbot_ros_msgs.git
-cd dbot_ros_msgs
-git checkout xenial-xerus-kinetic-dev
-cd ..
-git clone git@github.com:bayesian-object-tracking/dbot_ros.git
-cd dbot_ros
-git checkout xenial-xerus-kinetic-dev
-cd ../../
-catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
-source devel/setup.bash
-```
-
-If no CUDA enabled device is available, you can build without the GPU implementation via 
-```bash
-catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
-```
 
 ### Install and run the example
 The getting started repository contains a ROS bagfile (a depth image sequence of an object being moved)
@@ -122,10 +74,6 @@ git clone https://git-amd.tuebingen.mpg.de/open-source/dbot_getting_started.git
 cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 source devel/setup.bash
-```
-Again, if no CUDA enabled device is available, you can build without the GPU implementation via 
-```bash
-catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=Off
 ```
 
 Now you can run the example:
