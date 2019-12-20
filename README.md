@@ -116,12 +116,26 @@ The robot tracking setup builds on top of the object tracking, i.e. follow
 first the workspace setup of the object tracking above. Then continue
 with the instructions below according to your ROS and Ubuntu version:
 
+
+#### With ROS kinetic and Ubuntu 16.04 or older
 ```bash
 cd $HOME/projects/tracking/src
 git clone git@github.com:bayesian-object-tracking/dbrt.git
 cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 ```
+
+#### With ROS kinetic and Ubuntu 18.04 or newer
+```bash
+cd $HOME/projects/tracking/src
+git clone git@github.com:bayesian-object-tracking/dbrt.git
+cd dbrt
+git checkout bionic-beaver-melodic-dev
+cd ../..
+catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
+```
+
+
 
 ### Install and run the example
 
