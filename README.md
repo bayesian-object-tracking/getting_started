@@ -125,7 +125,7 @@ cd ..
 catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 ```
 
-#### With ROS kinetic and Ubuntu 18.04 or newer
+#### With ROS melodic and Ubuntu 18.04 or newer
 ```bash
 cd $HOME/projects/tracking/src
 git clone git@github.com:bayesian-object-tracking/dbrt.git
