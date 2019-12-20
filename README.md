@@ -48,7 +48,6 @@ The object tracking (dbot, dbot_ros) can be used without the robot tracking pack
 
 ### Workspace setup and compilation
 
-#### With ROS indigo and Ubuntu 14.04
 ```bash
 cd $HOME
 mkdir -p projects/tracking/src  
