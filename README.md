@@ -33,14 +33,12 @@ to your needs.
 
 ## Requirements
  * MS Kinect 1/2 or Asus XTION depth sensor (might work with other sensors, but has not been tested)
- * Ubuntu 14.04 / 16.04 (might work on other versions, but has not been tested)
  * c++11 Compiler (gcc-4.7 or later)
  * (optional) [CUDA](https://developer.nvidia.com/cuda-downloads) 6.5 or later with CUDA enabled
    graphic card 
 
 ## Dependencies
- * [ROS Indigo](http://wiki.ros.org/indigo) with Ubuntu 14.04
- * [ROS Kinetic](http://wiki.ros.org/kinetic) with Ubuntu 16.04
+ * ROS
  * [Eigen](http://eigen.tuxfamily.org/) 3.2.1 or later
  
 ## Object Tracking
@@ -139,7 +137,7 @@ catkin_make -DCMAKE_BUILD_TYPE=Release -DDBOT_BUILD_GPU=On
 source devel/setup.bash
 ```
 
-#### With ROS kinetic and Ubuntu 16.04
+#### With ROS kinetic and Ubuntu 16.04 or newer
 ```bash
 cd $HOME/projects/tracking/src
 git clone https://git-amd.tuebingen.mpg.de/open-source/dbrt_getting_started.git
